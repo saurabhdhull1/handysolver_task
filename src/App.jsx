@@ -14,7 +14,7 @@ function App() {
       {/* Header */}
       <div className="flex align-middle justify-between md:justify-center fixed left-0 top-0 z-[999] w-[100%] rounded-2xl bg-yellow-50 text-zinc-500 shadow-lg px-5 py-3 text-center text-3xl font-bold">
         <button className="inline-block md:hidden" onClick={() => setshowMenu(!showMenu)}>❁</button>
-        <div>Job Dekho</div>
+        <div>Job Manager</div>
       </div>
 
       {/* Components */}
