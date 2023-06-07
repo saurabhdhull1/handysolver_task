@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { deleteIcon, wordbreak } from '../data/Constant';
 import duplicateImg from "../assets/duplicate.png"
@@ -42,7 +42,7 @@ function Jobs() {
         jobLocationcheck,
         employmentTypecheck,
         jobTypecheck,
-    } = location.state.item
+    } = jobList[index] || {};
 
     const handleDelete = () => {
         const updatedJobList = jobList.filter((_, i) => i !== index);
@@ -56,6 +56,21 @@ function Jobs() {
         console.log(updatedJobList)
         setJobList(updatedJobList)
     };
+
+    const [edit, setEdit] = useState(false)
+
+    // Input update function
+
+    const updateJobTitle = (newJobTitle, index) => {
+        setJobList((prevJobList) =>
+            prevJobList.map((job, i) => {
+                // console.log(i, index, job);
+                return i === index ? { ...job, jobTitle: newJobTitle } : job
+            }
+            )
+        );
+    };
+
 
     return (
         <div className="rounded-2xl shadow-lg border-slate p-5 backdrop-blur bg-green-50 w-[100%] lg:w-[50%]">
@@ -77,7 +92,15 @@ function Jobs() {
                     <div className="flex align-middle justify-between gap-3 flex-col md:flex-row">
                         {jobTitlecheck && <div className="max-w-[50%]">
                             <div className="text-zinc-600 p-5">
-                                <div className="text-2xl font-bold capitalize" style={wordbreak}>{jobTitle == "" ? 'Job Title' : jobTitle}</div>
+                                <div className="text-2xl font-bold capitalize" style={wordbreak} onClick={() => setEdit(!edit)}>{jobTitle == "" ? 'Job Title' : jobTitle}</div>
+                                {edit && <input
+                                    className="shadow-sm bg-white w-[100%] my-2 rounded-3xl px-5 py-2"
+                                    type="text"
+                                    name="jobTitle"
+                                    value={jobTitle}
+                                    onChange={(e) => updateJobTitle(e.target.value, index)}
+                                    placeholder="Enter Job title"
+                                />}
                             </div>
                         </div>}
 

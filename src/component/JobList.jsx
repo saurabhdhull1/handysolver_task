@@ -25,7 +25,7 @@ function JobList({ setshowMenu }) {
         </button>
       </div>
       <div className="rounded-2xl shadow-lg border-slate p-5 backdrop-blur bg-gradient-to-br from-green-200 to-yellow-200">
-        {jobList.length == 0 ? <div className="text-center">No jobs posted</div> : jobList?.map((item, index) => {
+        {jobList?.length == 0 ? <div className="text-center">No jobs posted</div> : jobList?.map((item, index) => {
           return (
             // here i am using index as key but it is not a recommended
             <div
@@ -34,7 +34,7 @@ function JobList({ setshowMenu }) {
               style={changeColor == index ? { background: "#ffd814" } : { background: "lightyellow" }}
               onClick={() => {
                 setchangeColor(index);
-                navigate("/jobs", { state: { item, index } });
+                navigate("/jobs", { state: { index } });
                 setshowMenu(false)
               }}
             >
@@ -47,7 +47,8 @@ function JobList({ setshowMenu }) {
   );
 }
 JobList.propTypes = {
-  setshowMenu: PropTypes.node.isRequired,
+  setshowMenu: PropTypes.func.isRequired,
+
 };
 
 export default JobList;

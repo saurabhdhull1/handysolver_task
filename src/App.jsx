@@ -19,7 +19,9 @@ function App() {
 
       {/* Components */}
       <div className="md:p-10 pt-[50px] md:pt-[90px] pl-[0px] md:pl-[250px] overflow-x-hidden">
-        {/* <div className="text-center text-5xl font-bold shadow-5xl z-[0] rounded-full opacity-80 w-[100%] h-[100%] bg-gradient-to-br from-yellow-300 to-green-400 fixed top-[50%] left-[50%] translate-x-[-50%] blur-lg translate-y-[-50%] rotate"></div>*/}
+        {/* 
+        <div className="text-center text-5xl font-bold shadow-5xl z-[0] rounded-full opacity-80 w-[100%] h-[100%] bg-gradient-to-br from-yellow-300 to-green-400 fixed top-[50%] left-[50%] translate-x-[-50%] blur-lg translate-y-[-50%] rotate"></div>
+      */}
         <div className={showMenu ? `fixed md:left-7 left-1 top-[70px] md:top-[100px] inline-block z-[999] p-2 rounded-lg backdrop-blur-lg` : `fixed md:left-7 left-1 top-[70px] md:top-[100px] hidden md:inline-block z-[999] p-2 rounded-lg backdrop-blur-lg`}>
           <JobList setshowMenu={setshowMenu} />
         </div>
